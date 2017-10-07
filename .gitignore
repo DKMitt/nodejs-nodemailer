@@ -1,0 +1,6 @@
+# Dependency directories
+inhouse
+node_modules
+.DS_Store
+.vscode
+

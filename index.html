@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Node.JS Express.JS nodemailer Email App</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> // <![CDATA[
+		$(document).ready(function(){
+			var from,to,subject,text;
+			$("#send_email").click(function(){      
+				to=$("#to").val();
+				subject=$("#subject").val();
+				text=$("#content").val();
+				$("#message").text("Sending E-mail...Please wait");
+				$.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+				if(data=="sent")
+					{
+						$("#message").empty().html("Email is been sent at "+to+" . Please check inbox!");
+					}
+
+				});
+			});
+		});
+	</script>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-zF4BRsG/fLiTGfR9QL82DrilZxrwgY/+du4p/c7J72zZj+FLYq4zY00RylP9ZjiT" crossorigin="anonymous">
+
+</head>
+<body>
+
+	<div id="container">
+		<div class="page-header col-md-12 form">
+	        <h3>Node.JS Express.JS nodemailer Email App</h3>
+	        <p>Description of the form email app</p>
+	    </div>
+	      <div>
+		      <form>
+		        <div class="form-group panel-heading">
+		          <label for="exampleInputEmail1">Email address</label>
+		          <input type="email" id="to" class="form-control" placeholder="Email">
+		        </div>
+		        <div class="form-group panel-heading">
+		          <label for="exampleInputEmail1">Subject</label>
+		          <input type="text" class="form-control" id="subject" placeholder="subject of email">
+		        </div>
+		        <div class="form-group panel-heading">
+		          <label for="exampleInputPassword1">Password</label>
+		          <textarea cols="100%" rows="6" class="form-control" id="content" placeholder="your message"></textarea>
+		        </div>
+		     	<div>
+		        	<button style="margin: 20px;" type="submit" id="send_email" class="btn btn-default panel-heading btn-primary submitbtn">Submit Form</button>
+		        </div>
+		        <div>
+		        	<span class="panel-heading1" id="message"></span>
+		    	</div>
+		      </form>
+			      <br />
+			      <br />
+	      </div>
+    </div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>
